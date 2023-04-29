@@ -18,6 +18,10 @@ const skills = {
 const happy = true;
 const finished = false;
 const goal = 3;
+
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 
 <Layout title={pageTitle}>
@@ -32,7 +36,7 @@ const goal = 3;
 
     {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
 
-    <p>
+    <div>
       Hi, I'm {identity.firstname}
       {identity.lastname}. I'm a {identity.occupation} and I love
       {
@@ -48,7 +52,7 @@ const goal = 3;
                 <h3>{skillType}</h3>
                 <ul>
                   {skills[skillType].map((skill, index) => {
-                    return <li>{skill}</li>;
+                    return <li class="skill">{skill}</li>;
                   })}
                 </ul>
               </div>
@@ -61,6 +65,18 @@ const goal = 3;
         This site will update as I complete more of the tutorial, so keep checking back and see how
         my journey is going!
       </p>
-    </p>
+    </div>
   </body>
 </Layout>
+
+<style define:vars={{ skillColor, fontWeight, textCase }}>
+  h1 {
+    color: purple;
+    font-size: 4rem;
+  }
+  .skill {
+    color: var(--skillColor);
+    font-weight: var(--fontWeight);
+    text-transform: var(--textCase);
+  }
+</style>
