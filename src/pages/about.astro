@@ -1,6 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
 const pageTitle = "About Me";
+
+const identity = {
+  firstname: "Starlord",
+  lastname: "Astro",
+  occupation: "Technical Writer",
+  hobbies: ["photography", "birdwatching", "baseball"]
+};
+
+const skills = {
+  languages: ["HTML", "CSS", "JavaScript"],
+  frameworks: ["React", "Vue", "Svelte"],
+  databases: ["MongoDB", "PostgreSQL", "MySQL"]
+};
+
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
 
 <Layout title={pageTitle}>
@@ -9,14 +26,41 @@ const pageTitle = "About Me";
     <h1>About Me</h1>
     <h2>... and my new Astro site!</h2>
 
-    <p>
-      I am working through Astro's introductory tutorial. This is the second page on my website, and
-      it's the first one I built myself!
-    </p>
+    {happy && <p>I am happy to be learning Astro!</p>}
+
+    {finished && <p>I finished this tutorial!</p>}
+
+    {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
 
     <p>
-      This site will update as I complete more of the tutorial, so keep checking back and see how my
-      journey is going!
+      Hi, I'm {identity.firstname}
+      {identity.lastname}. I'm a {identity.occupation} and I love
+      {
+        identity.hobbies.map((hobby, index) => {
+          return <span> {hobby}</span>;
+        })
+      }.
+      <div>
+        My skills include: {
+          Object.keys(skills).map((skillType, index) => {
+            return (
+              <div>
+                <h3>{skillType}</h3>
+                <ul>
+                  {skills[skillType].map((skill, index) => {
+                    return <li>{skill}</li>;
+                  })}
+                </ul>
+              </div>
+            );
+          })
+        }
+      </div>
+
+      <p>
+        This site will update as I complete more of the tutorial, so keep checking back and see how
+        my journey is going!
+      </p>
     </p>
   </body>
 </Layout>
