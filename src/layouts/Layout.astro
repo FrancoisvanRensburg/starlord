@@ -3,6 +3,10 @@ export interface Props {
   title: string;
 }
 
+// import "../styles/global.css";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import Hamburger from "../components/Hamburger.astro";
 const { title } = Astro.props;
 ---
 
@@ -15,14 +19,12 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/blog">Blog</a>
-  </nav>
+  <Hamburger />
+  <Navigation />
   <body>
     <slot />
   </body>
+  <Footer />
 
   <style is:global>
     :root {
@@ -38,5 +40,4 @@ const { title } = Astro.props;
         Bitstream Vera Sans Mono, Courier New, monospace;
     }
   </style>
-
 </html>
